@@ -35,10 +35,11 @@ $ npm install --global osx-version
 ```sh
 $ osx-version --help
 
-Example
-  $ osx-version
-  10.9.3
+  Example
+    osx-version
+    10.9.3
 ```
+
 
 ## Related
 

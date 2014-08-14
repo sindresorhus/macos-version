@@ -6,11 +6,12 @@ var osxVersion = require('./');
 
 function help() {
 	console.log([
-		pkg.description,
+	    '',
+		'  ' + pkg.description,
 		'',
-		'Example',
-		'  $ osx-version',
-		'  10.9.3'
+		'  Example',
+		'    osx-version',
+		'    10.9.3'
 	].join('\n'));
 }
 

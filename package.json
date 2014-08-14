@@ -4,13 +4,13 @@
   "description": "Get the OS X version of the current system. Example: 10.9.3",
   "license": "MIT",
   "repository": "sindresorhus/osx-version",
-  "bin": {
-    "osx-version": "cli.js"
-  },
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
+  },
+  "bin": {
+    "osx-version": "cli.js"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -36,7 +36,7 @@
     "version"
   ],
   "dependencies": {
-    "minimist": "^0.1.0"
+    "minimist": "^1.1.0"
   },
   "devDependencies": {
     "mocha": "*"
