@@ -1,6 +1,6 @@
 {
   "name": "osx-version",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Get the OS X version of the current system. Example: 10.9.3",
   "license": "MIT",
   "repository": "sindresorhus/osx-version",
