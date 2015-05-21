@@ -1,29 +1,15 @@
 #!/usr/bin/env node
 'use strict';
-var argv = require('minimist')(process.argv.slice(2));
-var pkg = require('./package.json');
+var meow = require('meow');
 var osxVersion = require('./');
 
-function help() {
-	console.log([
-	    '',
-		'  ' + pkg.description,
-		'',
-		'  Example',
-		'    osx-version',
-		'    10.9.3'
-	].join('\n'));
-}
-
-if (argv.help) {
-	help();
-	return;
-}
-
-if (argv.version) {
-	console.log(pkg.version);
-	return;
-}
+meow({
+	help: [
+		'Example',
+		'  osx-version',
+		'  10.9.3'
+	].join('\n')
+});
 
 osxVersion(function (err, version) {
 	if (err) {
