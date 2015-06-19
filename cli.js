@@ -8,7 +8,7 @@ meow({
 		'Example',
 		'  osx-version',
 		'  10.9.3'
-	].join('\n')
+	]
 });
 
 osxVersion(function (err, version) {
