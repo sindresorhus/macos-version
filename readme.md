@@ -22,23 +22,9 @@ osxVersion().then(version => {
 ```
 
 
-## CLI
-
-```
-$ npm install --global osx-version
-```
-
-```
-$ osx-version --help
-
-  Example
-    $ osx-version
-    10.9.3
-```
-
-
 ## Related
 
+- [osx-version-cli](https://github.com/sindresorhus/osx-version-cli) - CLI for this module
 - [osx-release](https://github.com/sindresorhus/osx-release) - Get the name and version of a OS X release from the Darwin version
 
 

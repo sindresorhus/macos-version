@@ -1,7 +1,7 @@
 {
   "name": "osx-version",
   "version": "1.0.0",
-  "description": "Get the OS X version of the current system. Example: 10.9.3",
+  "description": "Get the OS X version of the current system",
   "license": "MIT",
   "repository": "sindresorhus/osx-version",
   "author": {
@@ -9,24 +9,16 @@
     "email": "sindresorhus@gmail.com",
     "url": "sindresorhus.com"
   },
-  "bin": "cli.js",
   "engines": {
     "node": ">=0.10.0"
   },
-  "os": [
-    "darwin"
-  ],
   "scripts": {
     "test": "xo && ava"
   },
   "files": [
-    "index.js",
-    "cli.js"
+    "index.js"
   ],
   "keywords": [
-    "cli-app",
-    "cli",
-    "bin",
     "os",
     "osx",
     "operating",
@@ -35,7 +27,6 @@
     "version"
   ],
   "dependencies": {
-    "meow": "^3.4.1",
     "pify": "^2.2.0",
     "pinkie-promise": "^1.0.0"
   },
