@@ -15,7 +15,7 @@ $ npm install --save osx-version
 ```js
 const osxVersion = require('osx-version');
 
-osxVersion((err, version) => {
+osxVersion().then(version => {
 	console.log(version);
 	//=> '10.9.3'
 });
