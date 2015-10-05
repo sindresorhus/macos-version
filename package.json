@@ -35,10 +35,17 @@
     "version"
   ],
   "dependencies": {
-    "meow": "^3.4.1"
+    "meow": "^3.4.1",
+    "pify": "^2.2.0",
+    "pinkie-promise": "^1.0.0"
   },
   "devDependencies": {
     "ava": "*",
     "xo": "*"
+  },
+  "xo": {
+    "ignores": [
+      "test.js"
+    ]
   }
 }
