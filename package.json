@@ -17,7 +17,7 @@
     "darwin"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "xo && mocha"
   },
   "files": [
     "index.js",
@@ -38,6 +38,7 @@
     "meow": "^3.3.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "xo": "*"
   }
 }
