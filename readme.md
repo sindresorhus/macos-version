@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save osx-version
 ```
 
@@ -13,30 +13,26 @@ $ npm install --save osx-version
 ## Usage
 
 ```js
-var osxVersion = require('osx-version');
+const osxVersion = require('osx-version');
 
-osxVersion(function (err, version) {
-	if (err) {
-		throw err;
-	}
-
+osxVersion((err, version) => {
 	console.log(version);
-	//=> 10.9.3
+	//=> '10.9.3'
 });
 ```
 
 
 ## CLI
 
-```sh
+```
 $ npm install --global osx-version
 ```
 
-```sh
+```
 $ osx-version --help
 
   Example
-    osx-version
+    $ osx-version
     10.9.3
 ```
 
