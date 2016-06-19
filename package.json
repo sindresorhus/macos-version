@@ -1,9 +1,9 @@
 {
-  "name": "osx-version",
+  "name": "macos-version",
   "version": "2.1.0",
-  "description": "Get the OS X version of the current system",
+  "description": "Get the macOS version of the current system",
   "license": "MIT",
-  "repository": "sindresorhus/osx-version",
+  "repository": "sindresorhus/macos-version",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -20,6 +20,7 @@
   ],
   "keywords": [
     "os",
+    "macos",
     "osx",
     "operating",
     "system",

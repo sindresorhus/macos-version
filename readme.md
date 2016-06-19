@@ -1,21 +1,21 @@
-# osx-version [![Build Status](https://travis-ci.org/sindresorhus/osx-version.svg?branch=master)](https://travis-ci.org/sindresorhus/osx-version)
+# macos-version [![Build Status](https://travis-ci.org/sindresorhus/macos-version.svg?branch=master)](https://travis-ci.org/sindresorhus/macos-version)
 
-> Get the OS X version of the current system. Example: `10.9.3`
+> Get the macOS version of the current system. Example: `10.9.3`
 
 
 ## Install
 
 ```
-$ npm install --save osx-version
+$ npm install --save macos-version
 ```
 
 
 ## Usage
 
 ```js
-const osxVersion = require('osx-version');
+const macosVersion = require('macos-version');
 
-osxVersion().then(version => {
+macosVersion().then(version => {
 	console.log(version);
 	//=> '10.9.3'
 });
@@ -24,8 +24,8 @@ osxVersion().then(version => {
 
 ## Related
 
-- [osx-version-cli](https://github.com/sindresorhus/osx-version-cli) - CLI for this module
-- [osx-release](https://github.com/sindresorhus/osx-release) - Get the name and version of a OS X release from the Darwin version
+- [macos-version-cli](https://github.com/sindresorhus/macos-version-cli) - CLI for this module
+- [osx-release](https://github.com/sindresorhus/osx-release) - Get the name and version of a macOS release from the Darwin version
 
 
 ## License
