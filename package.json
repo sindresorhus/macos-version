@@ -1,7 +1,7 @@
 {
   "name": "macos-version",
   "version": "3.0.0",
-  "description": "Get the macOS version of the current system",
+  "description": "Get or check the current macOS version",
   "license": "MIT",
   "repository": "sindresorhus/macos-version",
   "author": {
@@ -19,22 +19,24 @@
     "index.js"
   ],
   "keywords": [
-    "os",
     "macos",
-    "osx",
+    "os",
+    "darwin",
     "operating",
     "system",
     "platform",
-    "version"
+    "version",
+    "release",
+    "semver",
+    "check",
+    "assert",
+    "condition"
   ],
   "dependencies": {
-    "execa": "^0.4.0"
+    "semver": "^5.3.0"
   },
   "devDependencies": {
     "ava": "*",
     "xo": "*"
-  },
-  "xo": {
-    "esnext": true
   }
 }
