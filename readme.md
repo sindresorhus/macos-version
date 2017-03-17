@@ -22,7 +22,7 @@ macosVersion.is('>10.10');
 //=> true
 
 macosVersion.assertGreaterThanOrEqualTo('10.12.5');
-//=> [Error: Requires macOS 10.10.5 or later]
+//=> [Error: Requires macOS 10.12.5 or later]
 ```
 
 
