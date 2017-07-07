@@ -5,6 +5,8 @@ const semver = require('semver');
 const isMacos = process.platform === 'darwin';
 let version;
 
+const clean = version => version.split('.').length === 2 ? `${version}.0` : version;
+
 const getVersion = () => {
 	if (!isMacos) {
 		throw new Error('Requires macOS');
@@ -21,12 +23,10 @@ const getVersion = () => {
 		version = matches[1];
 	}
 
-	return version;
+	return clean(version);
 };
 
 module.exports = getVersion;
-
-const clean = version => version.split('.').length === 2 ? `${version}.0` : version;
 
 const x = module.exports;
 
