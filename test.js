@@ -36,6 +36,18 @@ test('.assert()', t => {
 	});
 });
 
+test('.assertMacOS()', t => {
+	if (m.isMacos) {
+		t.notThrows(() => {
+			m.assertMacOS();
+		});
+	} else {
+		t.throws(() => {
+			m.assertMacOS();
+		});
+	}
+});
+
 test('.assertGreaterThanOrEqual()', t => {
 	t.throws(() => {
 		m.assertGreaterThanOrEqualTo('15.10');

@@ -9,7 +9,7 @@ const clean = version => version.split('.').length === 2 ? `${version}.0` : vers
 
 const getVersion = () => {
 	if (!isMacos) {
-		throw new Error('Requires macOS');
+		return;
 	}
 
 	if (!version) {
@@ -17,18 +17,22 @@ const getVersion = () => {
 		const matches = /<key>ProductVersion<\/key>[\s\S]*<string>([\d.]+)<\/string>/.exec(file);
 
 		if (!matches) {
-			throw new Error('Couldn\'t find the macOS version');
+			return;
 		}
 
 		version = matches[1];
 	}
 
-	return clean(version);
+	if (version) {
+		return clean(version);
+	}
 };
 
 module.exports = getVersion;
 
 const x = module.exports;
+
+x.isMacos = isMacos;
 
 x.is = input => {
 	if (!isMacos) {
@@ -36,6 +40,12 @@ x.is = input => {
 	}
 
 	return semver.satisfies(getVersion(), clean(input));
+};
+
+x.assertMacOS = () => {
+	if (!isMacos) {
+		throw new Error('Requires macOS');
+	}
 };
 
 x.isGreaterThanOrEqualTo = input => {
