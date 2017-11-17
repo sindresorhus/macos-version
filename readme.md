@@ -52,7 +52,7 @@ Throws an error if the macOS version is not greater than or equal to the specifi
 
 ### assertMacOS()
 
-Throws an error if platform is not OSX/macOS (i.e. darwin).
+Throws an error if platform is not macOS.
 
 ## Related
 

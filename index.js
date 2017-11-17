@@ -2,13 +2,13 @@
 const fs = require('fs');
 const semver = require('semver');
 
-const isMacos = process.platform === 'darwin';
+const isMacOS = process.platform === 'darwin';
 let version;
 
 const clean = version => version.split('.').length === 2 ? `${version}.0` : version;
 
 const getVersion = () => {
-	if (!isMacos) {
+	if (!isMacOS) {
 		return;
 	}
 
@@ -32,10 +32,10 @@ module.exports = getVersion;
 
 const x = module.exports;
 
-x.isMacos = isMacos;
+x.isMacOS = isMacOS;
 
 x.is = input => {
-	if (!isMacos) {
+	if (!isMacOS) {
 		return false;
 	}
 
@@ -43,13 +43,13 @@ x.is = input => {
 };
 
 x.assertMacOS = () => {
-	if (!isMacos) {
+	if (!isMacOS) {
 		throw new Error('Requires macOS');
 	}
 };
 
 x.isGreaterThanOrEqualTo = input => {
-	if (!isMacos) {
+	if (!isMacOS) {
 		return false;
 	}
 

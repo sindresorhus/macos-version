@@ -36,16 +36,17 @@ test('.assert()', t => {
 	});
 });
 
+test('.isMacOS', t => {
+	const boolAssert = (process.platform === 'darwin' ? t.true : t.false).bind(t);
+	boolAssert(m.isMacOS);
+});
+
 test('.assertMacOS()', t => {
-	if (m.isMacos) {
-		t.notThrows(() => {
-			m.assertMacOS();
-		});
-	} else {
-		t.throws(() => {
-			m.assertMacOS();
-		});
-	}
+	const assert = (m.isMacOS ? t.notThrows : t.throws).bind(t);
+
+	assert(() => {
+		m.assertMacOS();
+	});
 });
 
 test('.assertGreaterThanOrEqual()', t => {
