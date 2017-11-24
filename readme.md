@@ -58,6 +58,7 @@ Throws an error if platform is not macOS.
 
 True if platform is macOS.
 
+
 ## Related
 
 - [macos-version-cli](https://github.com/sindresorhus/macos-version-cli) - CLI for this module
