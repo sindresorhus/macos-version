@@ -54,6 +54,10 @@ Throws an error if the macOS version is not greater than or equal to the specifi
 
 Throws an error if platform is not macOS.
 
+### isMacOS
+
+True if platform is macOS.
+
 ## Related
 
 - [macos-version-cli](https://github.com/sindresorhus/macos-version-cli) - CLI for this module
