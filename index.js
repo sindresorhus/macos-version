@@ -2,14 +2,14 @@
 const fs = require('fs');
 const semver = require('semver');
 
-const isMacos = process.platform === 'darwin';
+const isMacOS = process.platform === 'darwin';
 let version;
 
 const clean = version => version.split('.').length === 2 ? `${version}.0` : version;
 
 const getVersion = () => {
-	if (!isMacos) {
-		throw new Error('Requires macOS');
+	if (!isMacOS) {
+		return;
 	}
 
 	if (!version) {
@@ -17,29 +17,39 @@ const getVersion = () => {
 		const matches = /<key>ProductVersion<\/key>[\s\S]*<string>([\d.]+)<\/string>/.exec(file);
 
 		if (!matches) {
-			throw new Error('Couldn\'t find the macOS version');
+			return;
 		}
 
 		version = matches[1];
 	}
 
-	return clean(version);
+	if (version) {
+		return clean(version);
+	}
 };
 
 module.exports = getVersion;
 
 const x = module.exports;
 
+x.isMacOS = isMacOS;
+
 x.is = input => {
-	if (!isMacos) {
+	if (!isMacOS) {
 		return false;
 	}
 
 	return semver.satisfies(getVersion(), clean(input));
 };
 
+x.assertMacOS = () => {
+	if (!isMacOS) {
+		throw new Error('Requires macOS');
+	}
+};
+
 x.isGreaterThanOrEqualTo = input => {
-	if (!isMacos) {
+	if (!isMacOS) {
 		return false;
 	}
 

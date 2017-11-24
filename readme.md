@@ -50,6 +50,14 @@ Throws an error if the macOS version is not greater than or equal to the specifi
 
 *Prefer this over `.assert()` whenever possible as it outputs a more user-friendly error message.*
 
+### assertMacOS()
+
+Throws an error if platform is not macOS.
+
+### .isMacOS
+
+True if platform is macOS.
+
 
 ## Related
 
