@@ -54,7 +54,7 @@ Throws an error if the macOS version is not greater than or equal to the specifi
 
 Throws an error if platform is not macOS.
 
-### isMacOS
+### .isMacOS
 
 True if platform is macOS.
 
