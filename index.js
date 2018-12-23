@@ -7,6 +7,15 @@ let version;
 
 const clean = version => version.split('.').length === 2 ? `${version}.0` : version;
 
+const parseVersion = plist => {
+	const matches = /<key>ProductVersion<\/key>[\s]*<string>([\d.]+)<\/string>/.exec(plist);
+	if (!matches) {
+		return;
+	}
+
+	return matches[1];
+};
+
 const getVersion = () => {
 	if (!isMacOS) {
 		return;
@@ -14,13 +23,13 @@ const getVersion = () => {
 
 	if (!version) {
 		const file = fs.readFileSync('/System/Library/CoreServices/SystemVersion.plist', 'utf8');
-		const matches = /<key>ProductVersion<\/key>[\s\S]*<string>([\d.]+)<\/string>/.exec(file);
+		const matches = parseVersion(file);
 
 		if (!matches) {
 			return;
 		}
 
-		version = matches[1];
+		version = matches;
 	}
 
 	if (version) {
@@ -32,6 +41,7 @@ module.exports = getVersion;
 
 const x = module.exports;
 
+x.parseVersion = parseVersion;
 x.isMacOS = isMacOS;
 
 x.is = input => {
