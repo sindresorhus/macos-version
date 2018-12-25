@@ -1,14 +1,14 @@
 import test from 'ava';
 import semver from 'semver';
-import m from '.';
+import macosVersion from '.';
 
 test('main', t => {
-	const version = m();
+	const version = macosVersion();
 	console.log('Version:', version);
 	t.is(semver.valid(version), version);
 });
 
-test('main with ios support', t => {
+test('main with iOS support', t => {
 	const plist = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -27,62 +27,62 @@ test('main with ios support', t => {
 	<string>12.0</string>
 </dict>
 </plist>`;
-	const version = m.parseVersion(plist);
+	const version = macosVersion._parseVersion(plist);
 	t.is(semver.valid(version), version);
 	t.is(version, '10.14.2');
 });
 
 test('.is()', t => {
-	t.true(m.is('>=10.10'));
-	t.true(m.is('>=10.10.2'));
-	t.true(m.is('<20'));
-	t.true(m.is(m()));
-	t.false(m.is('<10'));
+	t.true(macosVersion.is('>=10.10'));
+	t.true(macosVersion.is('>=10.10.2'));
+	t.true(macosVersion.is('<20'));
+	t.true(macosVersion.is(macosVersion()));
+	t.false(macosVersion.is('<10'));
 });
 
 test('.isGreaterThanOrEqual()', t => {
-	t.true(m.isGreaterThanOrEqualTo('10.10'));
-	t.true(m.isGreaterThanOrEqualTo('10.10.2'));
-	t.false(m.isGreaterThanOrEqualTo('15.10'));
+	t.true(macosVersion.isGreaterThanOrEqualTo('10.10'));
+	t.true(macosVersion.isGreaterThanOrEqualTo('10.10.2'));
+	t.false(macosVersion.isGreaterThanOrEqualTo('15.10'));
 });
 
 test('.assert()', t => {
 	t.throws(() => {
-		m.assert('<=10.10');
+		macosVersion.assert('<=10.10');
 	});
 
 	t.notThrows(() => {
-		m.assert('>=10.10');
+		macosVersion.assert('>=10.10');
 	});
 
 	t.notThrows(() => {
-		m.assert('>=10.10.2');
+		macosVersion.assert('>=10.10.2');
 	});
 });
 
 test('.isMacOS', t => {
-	const boolAssert = (process.platform === 'darwin' ? t.true : t.false).bind(t);
-	boolAssert(m.isMacOS);
+	const boolAssert = (process.platform === 'darwin' ? t.true : t.false);
+	boolAssert(macosVersion.isMacOS);
 });
 
 test('.assertMacOS()', t => {
-	const assert = (m.isMacOS ? t.notThrows : t.throws).bind(t);
+	const assert = (macosVersion.isMacOS ? t.notThrows : t.throws);
 
 	assert(() => {
-		m.assertMacOS();
+		macosVersion.assertMacOS();
 	});
 });
 
 test('.assertGreaterThanOrEqual()', t => {
 	t.throws(() => {
-		m.assertGreaterThanOrEqualTo('15.10');
+		macosVersion.assertGreaterThanOrEqualTo('15.10');
 	});
 
 	t.notThrows(() => {
-		m.assertGreaterThanOrEqualTo('10.10');
+		macosVersion.assertGreaterThanOrEqualTo('10.10');
 	});
 
 	t.notThrows(() => {
-		m.assertGreaterThanOrEqualTo('10.10.2');
+		macosVersion.assertGreaterThanOrEqualTo('10.10.2');
 	});
 });

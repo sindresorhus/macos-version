@@ -41,7 +41,8 @@ module.exports = getVersion;
 
 const x = module.exports;
 
-x.parseVersion = parseVersion;
+x._parseVersion = parseVersion;
+
 x.isMacOS = isMacOS;
 
 x.is = input => {

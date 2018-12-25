@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save macos-version
+$ npm install macos-version
 ```
 
 
