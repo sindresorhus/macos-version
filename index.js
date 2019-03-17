@@ -38,14 +38,13 @@ const getVersion = () => {
 };
 
 module.exports = getVersion;
+module.exports.default = getVersion;
 
-const x = module.exports;
+getVersion._parseVersion = parseVersion;
 
-x._parseVersion = parseVersion;
+getVersion.isMacOS = isMacOS;
 
-x.isMacOS = isMacOS;
-
-x.is = input => {
+getVersion.is = input => {
 	if (!isMacOS) {
 		return false;
 	}
@@ -53,13 +52,13 @@ x.is = input => {
 	return semver.satisfies(getVersion(), clean(input));
 };
 
-x.assertMacOS = () => {
+getVersion.assertMacOS = () => {
 	if (!isMacOS) {
 		throw new Error('Requires macOS');
 	}
 };
 
-x.isGreaterThanOrEqualTo = input => {
+getVersion.isGreaterThanOrEqualTo = input => {
 	if (!isMacOS) {
 		return false;
 	}
@@ -67,14 +66,14 @@ x.isGreaterThanOrEqualTo = input => {
 	return semver.gte(getVersion(), clean(input));
 };
 
-x.assert = input => {
-	if (!x.is(input)) {
+getVersion.assert = input => {
+	if (!getVersion.is(input)) {
 		throw new Error(`Requires macOS ${input}`);
 	}
 };
 
-x.assertGreaterThanOrEqualTo = input => {
-	if (!x.isGreaterThanOrEqualTo(input)) {
+getVersion.assertGreaterThanOrEqualTo = input => {
+	if (!getVersion.isGreaterThanOrEqualTo(input)) {
 		throw new Error(`Requires macOS ${input} or later`);
 	}
 };
