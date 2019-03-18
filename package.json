@@ -13,10 +13,11 @@
 		"node": ">=6"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava && tsd-check"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"macos",
@@ -33,10 +34,11 @@
 		"condition"
 	],
 	"dependencies": {
-		"semver": "^5.3.0"
+		"semver": "^5.6.0"
 	},
 	"devDependencies": {
-		"ava": "^1.0.1",
-		"xo": "^0.23.0"
+		"ava": "^1.3.1",
+		"tsd-check": "^0.5.0",
+		"xo": "^0.24.0"
 	}
 }
