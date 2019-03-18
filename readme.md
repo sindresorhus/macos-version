@@ -21,8 +21,21 @@ macosVersion();
 macosVersion.is('>10.10');
 //=> true
 
+macosVersion.isGreaterThanOrEqualTo('10.10');
+//=> true
+
+macosVersion.assert('>=10.12.5');
+//=> [Error: Requires macOS >=10.12.5]
+
 macosVersion.assertGreaterThanOrEqualTo('10.12.5');
 //=> [Error: Requires macOS 10.12.5 or later]
+
+macosVersion.assertMacOS();
+//=> [Error: Requires macOS]
+
+if (macosVersion.isMacOS) {
+	console.log('macOS');
+}
 ```
 
 
@@ -30,7 +43,7 @@ macosVersion.assertGreaterThanOrEqualTo('10.12.5');
 
 ### macosVersion()
 
-Returns the macOS version.
+Returns the macOS version or `undefined` if the platform is not macOS.
 
 ### macosVersion.is(semverRange)
 
@@ -50,13 +63,15 @@ Throws an error if the macOS version is not greater than or equal to the specifi
 
 *Prefer this over `.assert()` whenever possible as it outputs a more user-friendly error message.*
 
-### assertMacOS()
+### macosVersion.assertMacOS()
 
-Throws an error if platform is not macOS.
+Throws an error if the platform is not macOS.
 
-### .isMacOS
+### macosVersion.isMacOS
 
-True if platform is macOS.
+Type: `boolean`
+
+Whether the platform is macOS.
 
 
 ## Related

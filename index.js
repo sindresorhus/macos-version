@@ -52,12 +52,6 @@ getVersion.is = input => {
 	return semver.satisfies(getVersion(), clean(input));
 };
 
-getVersion.assertMacOS = () => {
-	if (!isMacOS) {
-		throw new Error('Requires macOS');
-	}
-};
-
 getVersion.isGreaterThanOrEqualTo = input => {
 	if (!isMacOS) {
 		return false;
@@ -75,5 +69,11 @@ getVersion.assert = input => {
 getVersion.assertGreaterThanOrEqualTo = input => {
 	if (!getVersion.isGreaterThanOrEqualTo(input)) {
 		throw new Error(`Requires macOS ${input} or later`);
+	}
+};
+
+getVersion.assertMacOS = () => {
+	if (!isMacOS) {
+		throw new Error('Requires macOS');
 	}
 };

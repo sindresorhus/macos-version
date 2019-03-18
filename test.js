@@ -60,19 +60,6 @@ test('.assert()', t => {
 	});
 });
 
-test('.isMacOS', t => {
-	const boolAssert = (process.platform === 'darwin' ? t.true : t.false);
-	boolAssert(macosVersion.isMacOS);
-});
-
-test('.assertMacOS()', t => {
-	const assert = (macosVersion.isMacOS ? t.notThrows : t.throws);
-
-	assert(() => {
-		macosVersion.assertMacOS();
-	});
-});
-
 test('.assertGreaterThanOrEqual()', t => {
 	t.throws(() => {
 		macosVersion.assertGreaterThanOrEqualTo('15.10');
@@ -85,4 +72,17 @@ test('.assertGreaterThanOrEqual()', t => {
 	t.notThrows(() => {
 		macosVersion.assertGreaterThanOrEqualTo('10.10.2');
 	});
+});
+
+test('.assertMacOS()', t => {
+	const assert = (macosVersion.isMacOS ? t.notThrows : t.throws);
+
+	assert(() => {
+		macosVersion.assertMacOS();
+	});
+});
+
+test('.isMacOS', t => {
+	const boolAssert = (process.platform === 'darwin' ? t.true : t.false);
+	boolAssert(macosVersion.isMacOS);
 });
