@@ -4,7 +4,7 @@ declare const macosVersion: {
 
 	@example
 	```
-	import macosVersion from 'macos-version';
+	import macosVersion = require('macos-version');
 
 	macosVersion();
 	//=> '10.12.3'
@@ -17,7 +17,7 @@ declare const macosVersion: {
 
 	@example
 	```
-	import macosVersion from 'macos-version';
+	import macosVersion = require('macos-version');
 
 	macosVersion.is('>10.10');
 	//=> true
@@ -30,7 +30,7 @@ declare const macosVersion: {
 
 	@example
 	```
-	import macosVersion from 'macos-version';
+	import macosVersion = require('macos-version');
 
 	macosVersion.isGreaterThanOrEqualTo('10.10');
 	//=> true
@@ -43,7 +43,7 @@ declare const macosVersion: {
 
 	@example
 	```
-	import macosVersion from 'macos-version';
+	import macosVersion = require('macos-version');
 
 	macosVersion.assert('>=10.12.5');
 	//=> [Error: Requires macOS >=10.12.5]
@@ -58,7 +58,7 @@ declare const macosVersion: {
 
 	@example
 	```
-	import macosVersion from 'macos-version';
+	import macosVersion = require('macos-version');
 
 	macosVersion.assertGreaterThanOrEqualTo('10.12.5');
 	//=> [Error: Requires macOS 10.12.5 or later]
@@ -71,7 +71,7 @@ declare const macosVersion: {
 
 	@example
 	```
-	import macosVersion from 'macos-version';
+	import macosVersion = require('macos-version');
 
 	macosVersion.assertMacOS();
 	//=> [Error: Requires macOS]
@@ -84,7 +84,7 @@ declare const macosVersion: {
 
 	@example
 	```
-	import macosVersion from 'macos-version';
+	import macosVersion = require('macos-version');
 
 	if (macosVersion.isMacOS) {
 		console.log('macOS');
@@ -92,6 +92,9 @@ declare const macosVersion: {
 	```
 	*/
 	readonly isMacOS: boolean;
+
+	// TODO: remove this in the next major version
+	default: typeof macosVersion;
 };
 
-export default macosVersion;
+export = macosVersion;
