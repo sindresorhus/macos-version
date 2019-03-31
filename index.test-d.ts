@@ -1,5 +1,5 @@
-import {expectType} from 'tsd-check';
-import macosVersion from '.';
+import {expectType} from 'tsd';
+import macosVersion = require('.');
 
 expectType<string | undefined>(macosVersion());
 expectType<boolean>(macosVersion.is('>10.10'));

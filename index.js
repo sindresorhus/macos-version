@@ -38,6 +38,7 @@ const getVersion = () => {
 };
 
 module.exports = getVersion;
+// TODO: remove this in the next major version
 module.exports.default = getVersion;
 
 getVersion._parseVersion = parseVersion;
