@@ -1,4 +1,4 @@
-# macos-version [![Build Status](https://travis-ci.org/sindresorhus/macos-version.svg?branch=master)](https://travis-ci.org/sindresorhus/macos-version)
+# macos-version
 
 > Get or check the current macOS version
 
