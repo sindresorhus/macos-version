@@ -1,6 +1,6 @@
 {
 	"name": "macos-version",
-	"version": "5.2.0",
+	"version": "5.2.1",
 	"description": "Get or check the current macOS version",
 	"license": "MIT",
 	"repository": "sindresorhus/macos-version",
