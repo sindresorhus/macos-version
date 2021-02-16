@@ -2,13 +2,11 @@
 
 > Get or check the current macOS version
 
-
 ## Install
 
 ```
 $ npm install macos-version
 ```
-
 
 ## Usage
 
@@ -37,7 +35,6 @@ if (macosVersion.isMacOS) {
 	console.log('macOS');
 }
 ```
-
 
 ## API
 
@@ -73,13 +70,7 @@ Type: `boolean`
 
 Whether the platform is macOS.
 
-
 ## Related
 
 - [macos-version-cli](https://github.com/sindresorhus/macos-version-cli) - CLI for this module
 - [macos-release](https://github.com/sindresorhus/macos-release) - Get the name and version of a macOS release from the Darwin version
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
