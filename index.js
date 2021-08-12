@@ -1,8 +1,9 @@
-'use strict';
-const fs = require('fs');
-const semver = require('semver');
+import process from 'node:process';
+import fs from 'node:fs';
+import semver from 'semver';
 
-const isMacOS = process.platform === 'darwin';
+export const isMacOS = process.platform === 'darwin';
+
 let version;
 
 const clean = version => {
@@ -20,7 +21,7 @@ const clean = version => {
 };
 
 const parseVersion = plist => {
-	const matches = /<key>ProductVersion<\/key>[\s]*<string>([\d.]+)<\/string>/.exec(plist);
+	const matches = /<key>ProductVersion<\/key>\s*<string>([\d.]+)<\/string>/.exec(plist);
 	if (!matches) {
 		return;
 	}
@@ -28,7 +29,7 @@ const parseVersion = plist => {
 	return matches[1].replace('10.16', '11');
 };
 
-const getVersion = () => {
+export function macOSVersion() {
 	if (!isMacOS) {
 		return;
 	}
@@ -41,60 +42,54 @@ const getVersion = () => {
 			return;
 		}
 
-		version = matches;
+		version = clean(matches);
 	}
 
-	if (version) {
-		return clean(version);
-	}
-};
+	return version;
+}
 
-module.exports = getVersion;
-// TODO: remove this in the next major version
-module.exports.default = getVersion;
+if (process.env.NODE_ENV === 'test') {
+	macOSVersion._parseVersion = parseVersion;
+}
 
-getVersion._parseVersion = parseVersion;
-
-getVersion.isMacOS = isMacOS;
-
-getVersion.is = input => {
+export function isMacOSVersion(semverRange) {
 	if (!isMacOS) {
 		return false;
 	}
 
-	input = input.replace('10.16', '11');
+	semverRange = semverRange.replace('10.16', '11');
 
-	return semver.satisfies(getVersion(), clean(input));
-};
+	return semver.satisfies(macOSVersion(), clean(semverRange));
+}
 
-getVersion.isGreaterThanOrEqualTo = input => {
+export function isMacOSVersionGreaterThanOrEqualTo(version) {
 	if (!isMacOS) {
 		return false;
 	}
 
-	input = input.replace('10.16', '11');
+	version = version.replace('10.16', '11');
 
-	return semver.gte(getVersion(), clean(input));
-};
+	return semver.gte(macOSVersion(), clean(version));
+}
 
-getVersion.assert = input => {
-	input = input.replace('10.16', '11');
+export function assertMacOSVersion(semverRange) {
+	semverRange = semverRange.replace('10.16', '11');
 
-	if (!getVersion.is(input)) {
-		throw new Error(`Requires macOS ${input}`);
+	if (!isMacOSVersion(semverRange)) {
+		throw new Error(`Requires macOS ${semverRange}`);
 	}
-};
+}
 
-getVersion.assertGreaterThanOrEqualTo = input => {
-	input = input.replace('10.16', '11');
+export function assertMacOSVersionGreaterThanOrEqualTo(version) {
+	version = version.replace('10.16', '11');
 
-	if (!getVersion.isGreaterThanOrEqualTo(input)) {
-		throw new Error(`Requires macOS ${input} or later`);
+	if (!isMacOSVersionGreaterThanOrEqualTo(version)) {
+		throw new Error(`Requires macOS ${version} or later`);
 	}
-};
+}
 
-getVersion.assertMacOS = () => {
+export function assertMacOS() {
 	if (!isMacOS) {
 		throw new Error('Requires macOS');
 	}
-};
+}

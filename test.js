@@ -1,9 +1,17 @@
 import test from 'ava';
 import semver from 'semver';
-import macosVersion from '.';
+import {
+	macOSVersion,
+	isMacOSVersion,
+	isMacOSVersionGreaterThanOrEqualTo,
+	assertMacOSVersion,
+	assertMacOSVersionGreaterThanOrEqualTo,
+	assertMacOS,
+	isMacOS,
+} from './index.js';
 
 test('main', t => {
-	const version = macosVersion();
+	const version = macOSVersion();
 	console.log('Version:', version);
 	t.is(semver.valid(version), version);
 });
@@ -27,62 +35,62 @@ test('main with iOS support', t => {
 	<string>12.0</string>
 </dict>
 </plist>`;
-	const version = macosVersion._parseVersion(plist);
+	const version = macOSVersion._parseVersion(plist);
 	t.is(semver.valid(version), version);
 	t.is(version, '10.14.2');
 });
 
-test('.is()', t => {
-	t.true(macosVersion.is('>=10.10'));
-	t.true(macosVersion.is('>=10.10.2'));
-	t.true(macosVersion.is('<20'));
-	t.true(macosVersion.is(macosVersion()));
-	t.false(macosVersion.is('<10'));
+test('isMacOSVersion()', t => {
+	t.true(isMacOSVersion('>=10.10'));
+	t.true(isMacOSVersion('>=10.10.2'));
+	t.true(isMacOSVersion('<20'));
+	t.true(isMacOSVersion(macOSVersion()));
+	t.false(isMacOSVersion('<10'));
 });
 
-test('.isGreaterThanOrEqual()', t => {
-	t.true(macosVersion.isGreaterThanOrEqualTo('10.10'));
-	t.true(macosVersion.isGreaterThanOrEqualTo('10.10.2'));
-	t.false(macosVersion.isGreaterThanOrEqualTo('15.10'));
+test('isMacOSVersionGreaterThanOrEqualTo', t => {
+	t.true(isMacOSVersionGreaterThanOrEqualTo('10.10'));
+	t.true(isMacOSVersionGreaterThanOrEqualTo('10.10.2'));
+	t.false(isMacOSVersionGreaterThanOrEqualTo('15.10'));
 });
 
-test('.assert()', t => {
+test('assertMacOSVersion()', t => {
 	t.throws(() => {
-		macosVersion.assert('<=10.10');
+		assertMacOSVersion('<=10.10');
 	});
 
 	t.notThrows(() => {
-		macosVersion.assert('>=10.10');
+		assertMacOSVersion('>=10.10');
 	});
 
 	t.notThrows(() => {
-		macosVersion.assert('>=10.10.2');
+		assertMacOSVersion('>=10.10.2');
 	});
 });
 
-test('.assertGreaterThanOrEqual()', t => {
+test('assertMacOSVersionGreaterThanOrEqualTo()', t => {
 	t.throws(() => {
-		macosVersion.assertGreaterThanOrEqualTo('15.10');
+		assertMacOSVersionGreaterThanOrEqualTo('15.10');
 	});
 
 	t.notThrows(() => {
-		macosVersion.assertGreaterThanOrEqualTo('10.10');
+		assertMacOSVersionGreaterThanOrEqualTo('10.10');
 	});
 
 	t.notThrows(() => {
-		macosVersion.assertGreaterThanOrEqualTo('10.10.2');
+		assertMacOSVersionGreaterThanOrEqualTo('10.10.2');
 	});
 });
 
-test('.assertMacOS()', t => {
-	const assert = (macosVersion.isMacOS ? t.notThrows : t.throws);
+test('assertMacOS()', t => {
+	const assert = isMacOS ? t.notThrows : t.throws;
 
 	assert(() => {
-		macosVersion.assertMacOS();
+		assertMacOS();
 	});
 });
 
-test('.isMacOS', t => {
-	const boolAssert = (process.platform === 'darwin' ? t.true : t.false);
-	boolAssert(macosVersion.isMacOS);
+test('isMacOS', t => {
+	const boolAssert = isMacOS ? t.true : t.false;
+	boolAssert(isMacOS);
 });
